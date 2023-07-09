@@ -1,0 +1,75 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+
+
+</head>
+
+
+<body>
+
+    <div id="calculator">
+        <div id="rows">
+          <div class="row">
+            <input type="text" class="subject" placeholder="Subject">
+            <input type="number" class="grade" placeholder="Grade">
+          </div>
+          <div class="row">
+            <input type="text" class="subject" placeholder="Subject">
+            <input type="number" class="grade" placeholder="Grade">
+          </div>
+          <div class="row">
+            <input type="text" class="subject" placeholder="Subject">
+            <input type="number" class="grade" placeholder="Grade">
+          </div>
+        </div>
+        <button id="addButton">+</button>
+        <button id="calculate">Calculate</button>
+        <div id="result"></div>
+      </div>
+      
+
+    <script>
+        var addButton = document.getElementById("addButton");
+var calculateButton = document.getElementById("calculate");
+var rowsContainer = document.getElementById("rows");
+var resultContainer = document.getElementById("result");
+
+addButton.addEventListener("click", function() {
+  var newRow = document.createElement("div");
+  newRow.classList.add("row");
+  newRow.innerHTML = `
+    <input type="text" class="subject" placeholder="Subject">
+    <input type="number" class="grade" placeholder="Grade">
+  `;
+  rowsContainer.appendChild(newRow);
+});
+
+calculateButton.addEventListener("click", function() {
+  var grades = document.getElementsByClassName("grade");
+  var total = 0;
+  var count = grades.length;
+  
+  for (var i = 0; i < count; i++) {
+    var grade = parseFloat(grades[i].value);
+    if (!isNaN(grade)) {
+      total += grade;
+    }
+  }
+  
+  var average = total / count;
+  resultContainer.innerHTML = "Average Grade: " + average;
+});
+    </script>
+
+        
+
+
+
+
+
+
+</body>
+
+</html>
